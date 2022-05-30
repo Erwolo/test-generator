@@ -3,7 +3,7 @@
 public class ${tableName} {
 
 <#list tableFields as field>
-    private String ${field}
+    private String ${field};
 </#list>
 
 }
