@@ -26,28 +26,11 @@ public class HomeController {
     List<Integer> ids = new ArrayList<>();
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index() {
 
 
         return "index";
     }
-
-
-
-//    @PostMapping("/generate")
-//    public String generate() throws IOException, TemplateException {
-//
-//        Map<String, Object> model = new HashMap<String, Object>();
-//        model.put("tableName", "moja_tabela");
-//
-//        Configuration cfg = new Configuration(Configuration.VERSION_2_3_28);
-//        Template tmp = cfg.getTemplate("EntityTemplate.ftlh");
-//
-//        tmp.process(model, new OutputStreamWriter(System.out));
-//        System.out.println(tmp);
-//
-//        return "index";
-//    }
 
     @PostMapping("/generate")
     public String generate(@RequestParam String tableName, @RequestParam String field1, @RequestParam String field2, @RequestParam String field3) throws IOException, TemplateException {

@@ -5,31 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/generate}" method="post">
-    <label for="tableName">Table name:</label>
-    <input type="text" id="tableName" name="tableName"/>
-    <br/><label for="field1">Table field:</label><input type="text" id="field1" name="field1"/>
-    <br/><label for="field1">Table field:</label><input type="text" id="field1" name="field2"/>
-    <br/><label for="field1">Table field:</label><input type="text" id="field1" name="field3"/>
-    <br/><input type="submit" name="generate" value="Wygeneruj" />
-</form>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-<!--<table>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th> numer </th>-->
-<!--        <th> nazwa </th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:if="${ids.empty}">-->
-<!--        <td colspan="2"> No items </td>-->
-<!--    </tr>-->
-<!--    <tr th:each="id : ${ids}">-->
-<!--        <td><span th:text="${id}"> Title </span></td>-->
-<!--        <td><span th:text="${id}"> Author </span></td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
+<h1>Kupsztal</h1>
+
+
 </body>
 </html>
