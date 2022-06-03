@@ -41,7 +41,7 @@ public class HomeController {
         tableFields.add(field3);
 
         Configuration configuration = prepareConfiguration();
-        Template template = configuration.getTemplate("EntityTemplate.ftlh");
+        Template template = configuration.getTemplate("database_templates/EntityTemplate.ftlh");
         StringWriter stringWriter = new StringWriter();
         Map<String, Object> data = prepareTable(tableName);
         data.put("tableFields", tableFields);
