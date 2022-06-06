@@ -1,15 +1,16 @@
 {
   "configuration": {
-    "credentials": {
-      "db_user": "<insert>",
-      "db_password": "<insert>"
-    },
-    "settings": {
-      "url": "",
-      "port": "",
-      "driver": "",
-      "schema": ""
+    "database": {
+      "credentials": {
+        "db_user": "",
+        "db_password": ""
+      },
+      "settings": {
+        "url": "",
+        "port": "",
+        "driver": "",
+        "schema": ""
+      }
     }
-
   }
 }

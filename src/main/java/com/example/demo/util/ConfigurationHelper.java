@@ -2,11 +2,11 @@ package com.example.demo.util;
 
 import org.json.JSONObject;
 
-public class Configuration {
+public class ConfigurationHelper {
 
     JSONObject configuration;
 
-    public Configuration() {
+    public ConfigurationHelper() {
     }
 
     public JSONObject getConfiguration() {
