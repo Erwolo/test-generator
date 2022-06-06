@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.util.FileHelper;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.template.Configuration;
@@ -23,55 +24,31 @@ import java.util.Map;
 @RequestMapping("/")
 public class HomeController {
 
-    List<Integer> ids = new ArrayList<>();
-
     @GetMapping("/")
     public String index() {
-
-
         return "index";
     }
 
-    @PostMapping("/generate")
-    public String generate(@RequestParam String tableName, @RequestParam String field1, @RequestParam String field2, @RequestParam String field3) throws IOException, TemplateException {
-
-        List<String> tableFields = new ArrayList<>();
-        tableFields.add(field1);
-        tableFields.add(field2);
-        tableFields.add(field3);
-
-        Configuration configuration = prepareConfiguration();
-        Template template = configuration.getTemplate("EntityTemplate.ftlh");
-        StringWriter stringWriter = new StringWriter();
-        Map<String, Object> data = prepareTable(tableName);
-        data.put("tableFields", tableFields);
-        template.process(data, stringWriter);
-        String templateContent = stringWriter.toString();
-
-
-
-
-        generateJavaClass("generated_output/" + tableName + ".java", templateContent);
-
-        return "index";
-    }
-
-    private void generateJavaClass(String className, String content) throws IOException {
-        FileWriter fileWriter = new FileWriter(className);
-        PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.print(content);
-        printWriter.close();
-    }
-
-
-    private Configuration prepareConfiguration() throws IOException {
-        Configuration configuration = new Configuration(Configuration.VERSION_2_3_23);
-        configuration.setDefaultEncoding("UTF-8");
-        configuration.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-        configuration.setLogTemplateExceptions(false);
-        configuration.setDirectoryForTemplateLoading(new File("src/main/resources/templates"));
-        return configuration;
-    }
+//    @PostMapping("/generate")
+//    public String generate(@RequestParam String tableName, @RequestParam String field1, @RequestParam String field2, @RequestParam String field3) throws IOException, TemplateException {
+//
+//        List<String> tableFields = new ArrayList<>();
+//        tableFields.add(field1);
+//        tableFields.add(field2);
+//        tableFields.add(field3);
+//
+//        Configuration configuration = prepareConfiguration();
+//        Template template = configuration.getTemplate("database_templates/EntityTemplate.ftlh");
+//        StringWriter stringWriter = new StringWriter();
+//        Map<String, Object> data = prepareTable(tableName);
+//        data.put("tableFields", tableFields);
+//        template.process(data, stringWriter);
+//        String templateContent = stringWriter.toString();
+//
+//        FileHelper.writeToFile("generated_output/" + tableName + ".java", templateContent);
+//
+//        return "index";
+//    }
 
     private Map<String, Object> prepareTable(String tableName) {
         Map<String, Object> data = new HashMap<String, Object>();
