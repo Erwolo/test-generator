@@ -1,5 +1,5 @@
 @Entity
-@Table(name = "${tableName})
+@Table(name = "${tableName}")
 public class ${tableName} {
 
 <#list tableFields as field>

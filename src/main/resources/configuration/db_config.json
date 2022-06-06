@@ -1,0 +1,16 @@
+{
+  "configuration": {
+    "database": {
+      "credentials": {
+        "db_user": "",
+        "db_password": ""
+      },
+      "settings": {
+        "url": "",
+        "port": "",
+        "driver": "",
+        "schema": ""
+      }
+    }
+  }
+}
