@@ -28,7 +28,7 @@ public class DatabaseGeneratorController {
         return "database";
     }
 
-    @PostMapping("/generate-table")
+    @PostMapping("/generate-db-table")
     public String generateDbTable(@RequestParam String tableName, @RequestParam String field1, @RequestParam String field2, @RequestParam String field3) throws IOException, TemplateException {
 
         List<String> tableFields = new ArrayList<>();
@@ -49,8 +49,9 @@ public class DatabaseGeneratorController {
         return "database";
     }
 
-    public String generateDbConnection() {
-
+    @RequestMapping("generate-db-connection")
+    public String generateDbConnection(@RequestParam String dbAddress) {
+        System.out.println("DB address is: " + dbAddress);
 
 
         return "database";
