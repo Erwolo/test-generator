@@ -1,9 +1,8 @@
-package com.example.demo.template.generator;
+package com.example.demo.template.config;
 
 import java.util.LinkedHashMap;
 
 public class TemplateConfig {
-    public String generatorClass;
     public String templateLocation;
     public String fileName;
     public String filePackage;
