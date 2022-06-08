@@ -1,0 +1,24 @@
+{
+  "templates": [
+  ],
+  "template": {
+    "templateLocation": " ",
+    "name": " ",
+    "package": "",
+    "import": [
+      "",
+      ""
+    ],
+    "config": {
+      "class": "",
+      "get": "",
+      "post": "",
+      "delete": "",
+      "update": "",
+      "findBy": [
+        "",
+        ""
+      ]
+    }
+  }
+}
