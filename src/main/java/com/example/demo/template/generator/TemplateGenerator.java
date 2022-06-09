@@ -13,7 +13,6 @@ public class TemplateGenerator {
     private TemplateHelper templateHelper;
 
     public void generate(TemplateConfig config) {
-
         config.config.put("fileName", config.fileName);
 
         String templateContent = templateHelper.getTemplateAsString(config);
