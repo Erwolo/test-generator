@@ -11,6 +11,9 @@
         "driver": "",
         "schema": ""
       }
+    },
+    "project": {
+      "generated_output_path": ""
     }
   }
 }

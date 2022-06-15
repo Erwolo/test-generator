@@ -29,27 +29,6 @@ public class HomeController {
         return "index";
     }
 
-//    @PostMapping("/generate")
-//    public String generate(@RequestParam String tableName, @RequestParam String field1, @RequestParam String field2, @RequestParam String field3) throws IOException, TemplateException {
-//
-//        List<String> tableFields = new ArrayList<>();
-//        tableFields.add(field1);
-//        tableFields.add(field2);
-//        tableFields.add(field3);
-//
-//        Configuration configuration = prepareConfiguration();
-//        Template template = configuration.getTemplate("database_templates/EntityTemplate.ftlh");
-//        StringWriter stringWriter = new StringWriter();
-//        Map<String, Object> data = prepareTable(tableName);
-//        data.put("tableFields", tableFields);
-//        template.process(data, stringWriter);
-//        String templateContent = stringWriter.toString();
-//
-//        FileHelper.writeToFile("generated_output/" + tableName + ".java", templateContent);
-//
-//        return "index";
-//    }
-
     private Map<String, Object> prepareTable(String tableName) {
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("tableName", tableName);

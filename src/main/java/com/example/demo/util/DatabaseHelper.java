@@ -6,10 +6,11 @@ import javax.sql.DataSource;
 
 public class DatabaseHelper {
 
-//
-    public static DataSource createDatSourceH2() {
+    protected DatabaseHelper(){}
+
+    public static DataSource createH2DatSource() {
         HikariDataSource ds = new HikariDataSource();
-        ds.setJdbcUrl("jdbc:h2:mem:;INIT=RUNSCRIPT FROM 'classpath:initialize.sql';");
+        ds.setJdbcUrl("jdbc:h2:mem:;INIT=RUNSCRIPT FROM 'classpath:/initialize.sql';");
         ds.setUsername("se");
         ds.setPassword("");
 
@@ -25,4 +26,6 @@ public class DatabaseHelper {
 
         return ds;
     }
+
+
 }
