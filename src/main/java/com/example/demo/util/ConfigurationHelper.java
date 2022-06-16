@@ -13,18 +13,18 @@ public class ConfigurationHelper {
     public ConfigurationHelper() {
     }
 
-    private JSONObject getConfiguration() {
+    private JSONObject getConfiguration(String configurationPath) {
         // TODO: validate configuration
-        JSONObject configuration = jsonParser.jsonFileToObject("src/main/resources/configuration/db_config.json");
+        JSONObject configuration = jsonParser.jsonFileToObject(configurationPath);
 
         return configuration;
     }
 
-    public JSONObject getDatabaseConfiguration() {
-        return getConfiguration().getJSONObject("configuration").getJSONObject("database");
+    public JSONObject getDatabaseConfiguration(String configurationPath) {
+        return getConfiguration(configurationPath).getJSONObject("configuration").getJSONObject("database");
     }
 
-    public JSONObject getProjectConfiguration() {
-        return getConfiguration().getJSONObject("configuration").getJSONObject("project");
+    public JSONObject getProjectConfiguration(String configurationPath) {
+        return getConfiguration(configurationPath).getJSONObject("configuration").getJSONObject("project");
     }
 }
