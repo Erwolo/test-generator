@@ -3,6 +3,7 @@ package com.example.demo.util;
 import com.example.demo.generator.exception.TemplateLoadException;
 import com.example.demo.generator.exception.TemplatesFolderNotFoundRuntimeException;
 import com.example.demo.template.config.TemplateConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.Map;
 
 @Component
 public class TemplateHelper {
@@ -45,20 +47,24 @@ public class TemplateHelper {
         StringWriter stringWriter = new StringWriter();
 
         try {
-            template.process(config.config, stringWriter);
+            template.process(convertToMap(config), stringWriter);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         return stringWriter.toString();
     }
 
-    private Template getTemplate(TemplateConfig config, Configuration configuration) {
+    private Map convertToMap(TemplateConfig config) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.convertValue(config, Map.class);
+    }
+
+    public Template getTemplate(TemplateConfig config, Configuration configuration) {
         try {
             return configuration.getTemplate(config.templateLocation);
         } catch (IOException e) {
             throw new TemplateLoadException(e);
         }
     }
-
 }

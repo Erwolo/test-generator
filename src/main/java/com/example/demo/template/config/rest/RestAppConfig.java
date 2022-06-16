@@ -1,9 +1,11 @@
 package com.example.demo.template.config.rest;
 
-import com.example.demo.template.config.TemplateConfig;
+import com.example.demo.template.config.AppConfig;
+import com.example.demo.template.config.rest.components.DtoConfig;
+import com.example.demo.template.config.rest.components.RestControllerConfig;
 
-import java.util.List;
+public class RestAppConfig extends AppConfig {
+    public RestControllerConfig restControllerConfig;
+    public DtoConfig dtoConfig;
 
-public class RestAppConfig {
-    public List<TemplateConfig> templates;
 }
