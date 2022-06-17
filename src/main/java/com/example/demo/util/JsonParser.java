@@ -11,7 +11,7 @@ public class JsonParser {
 
     public JsonParser() {}
 
-    public JSONObject jsonFileToObject(String file) {
+    public static JSONObject jsonFileToObject(String file) {
         String content = null;
         try {
             content = new String(Files.readAllBytes(Paths.get(file)));
@@ -21,7 +21,7 @@ public class JsonParser {
         return new JSONObject(content);
     }
 
-    public void jsonObjectToFile(JSONObject jsonObject, String file) {
+    public static void jsonObjectToFile(JSONObject jsonObject, String file) {
         FileHelper.writeToFile(file, jsonObject.toString());
     }
 }
