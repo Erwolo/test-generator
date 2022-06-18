@@ -1,0 +1,17 @@
+CREATE SCHEMA if NOT EXISTS micro_generator;
+USE micro_generator;
+INSERT IGNORE INTO user (login, password) values ('erwol', '123');
+INSERT IGNORE INTO user (login, password) values ('perwol', '321');
+INSERT IGNORE INTO role (name) values ('admin');
+INSERT IGNORE INTO role (name) values ('user');
+INSERT IGNORE INTO permission (name) values ('read');
+INSERT IGNORE INTO permission (name) values ('write');
+INSERT IGNORE INTO permission (name) values ('edit');
+INSERT IGNORE INTO permission (name) values ('delete');
+INSERT IGNORE INTO user_role (user_id, role_id) VALUES ((SELECT id FROM user WHERE name = 'erwol'), (SELECT id FROM role WHERE name = 'admin'));
+INSERT IGNORE INTO user_role (user_id, role_id) VALUES ((SELECT id FROM user WHERE name = 'perwol'), (SELECT id FROM role WHERE name = 'user'));
+INSERT IGNORE INTO role_permission (role_id, permission_id) VALUES ((SELECT id FROM role WHERE name = 'admin'), (SELECT id FROM permission WHERE name = 'read'));
+INSERT IGNORE INTO role_permission (role_id, permission_id) VALUES ((SELECT id FROM role WHERE name = 'admin'), (SELECT id FROM permission WHERE name = 'write'));
+INSERT IGNORE INTO role_permission (role_id, permission_id) VALUES ((SELECT id FROM role WHERE name = 'admin'), (SELECT id FROM permission WHERE name = 'edit'));
+INSERT IGNORE INTO role_permission (role_id, permission_id) VALUES ((SELECT id FROM role WHERE name = 'admin'), (SELECT id FROM permission WHERE name = 'delete'));
+INSERT IGNORE INTO role_permission (role_id, permission_id) VALUES ((SELECT id FROM role WHERE name = 'user'), (SELECT id FROM permission WHERE name = 'read'));

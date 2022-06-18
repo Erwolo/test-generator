@@ -22,6 +22,9 @@ public class BeansConfig {
 
     @Bean
     public PropertySourcesPlaceholderConfigurer placeHolderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
+        PropertySourcesPlaceholderConfigurer properties = new PropertySourcesPlaceholderConfigurer();
+        return properties;
     }
+
+
 }
