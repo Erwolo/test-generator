@@ -1,30 +1,43 @@
 package com.example.demo.util;
 
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ConfigurationHelper {
 
-    @Autowired
-    private JsonParser jsonParser;
+    private static JSONObject getConfiguration(String configurationPath) {
+        // src/main/resources/configuration/db_config.json
 
-    public ConfigurationHelper() {
-    }
-
-    private JSONObject getConfiguration() {
         // TODO: validate configuration
-        JSONObject configuration = jsonParser.jsonFileToObject("src/main/resources/configuration/db_config.json");
+        JSONObject configuration = JsonParser.jsonFileToObject(configurationPath);
 
         return configuration;
     }
 
-    public JSONObject getDatabaseConfiguration() {
-        return getConfiguration().getJSONObject("configuration").getJSONObject("database");
+    public static JSONObject getDatabaseConfig(String path) {
+        return getConfiguration(path).getJSONObject("configuration").getJSONObject("database");
     }
 
-    public JSONObject getProjectConfiguration() {
-        return getConfiguration().getJSONObject("configuration").getJSONObject("project");
+    public static JSONObject getDatabaseConfig(JSONObject jsonObject) {
+        return jsonObject.getJSONObject("configuration").getJSONObject("database");
+    }
+
+    public static JSONObject getProjectConfig(String path) {
+        return getConfiguration(path).getJSONObject("configuration").getJSONObject("project");
+    }
+
+    public static JSONObject getProjectConfig(JSONObject jsonObject) {
+        return jsonObject.getJSONObject("configuration").getJSONObject("project");
+    }
+
+    public static JSONObject addProperty(JSONObject currentJson, String key, String value) {
+        JSONObject properties;
+        if (currentJson.keySet().stream().noneMatch(k -> k.equals("properties"))) currentJson.put("properties", new JSONObject());
+
+        properties = currentJson.getJSONObject("properties");
+        properties.put(key, value);
+        currentJson.put("properties", properties);
+        return currentJson;
     }
 }
