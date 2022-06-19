@@ -3,10 +3,7 @@ package com.example.demo.model;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -21,6 +18,7 @@ public class Permission {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(unique = true)
     private String name;
 
     @ManyToMany(mappedBy = "permissions")
