@@ -20,14 +20,14 @@ public class DatabaseHelper {
 
     public DataSource createH2DataSource() {
         HikariDataSource ds = new HikariDataSource();
-        ds.setJdbcUrl("jdbc:h2:mem:;INIT=RUNSCRIPT FROM 'classpath:/initialize.sql';");
+        ds.setJdbcUrl("jdbc:h2:mem:;INIT=RUNSCRIPT FROM 'classpath:/data.sql';");
         ds.setUsername("se");
         ds.setPassword("");
 
         return ds;
     }
 
-    public HikariDataSource createMySqlDataSource() throws SQLException {
+    public HikariDataSource createMySqlDataSource() {
         HikariDataSource ds = new HikariDataSource();
         ds.setJdbcUrl(env.getProperty("spring.datasource.url"));
         ds.setUsername(env.getProperty("spring.datasource.username"));
