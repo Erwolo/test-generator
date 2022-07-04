@@ -1,9 +1,24 @@
 package com.example.demo.template.config.rest;
 
-import com.example.demo.template.config.TemplateConfig;
+import com.example.demo.template.config.AppConfig;
+import com.example.demo.template.config.rest.components.DtoConfig;
+import com.example.demo.template.config.rest.components.RestControllerConfig;
 
-import java.util.List;
+public class RestAppConfig extends AppConfig {
 
-public class RestAppConfig {
-    public List<TemplateConfig> templates;
+    public RestControllerConfig restControllerConfig;
+    public DtoConfig dtoConfig;
+
+    public RestAppConfig() {
+        this.name = "Rest Application";
+    }
+
+    @Override
+    public String toString() {
+        return "RestAppConfig{" +
+                "restControllerConfig=" + restControllerConfig +
+                ", dtoConfig=" + dtoConfig +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

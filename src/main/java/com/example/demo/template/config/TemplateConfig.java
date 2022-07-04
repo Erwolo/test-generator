@@ -3,7 +3,7 @@ package com.example.demo.template.config;
 import java.util.LinkedHashMap;
 
 public class TemplateConfig {
-    public String templateLocation;
+    public String template;
     public String fileName;
     public String filePackage;
 
