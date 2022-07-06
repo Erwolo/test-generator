@@ -1,10 +1,10 @@
-package com.example.demo.template.config.rest.components;
+package com.example.demo.module.rest.components;
 
-import com.example.demo.template.config.TemplateConfig;
+import com.example.demo.module.ModuleData;
 
 import java.util.List;
 
-public class RestControllerConfig extends TemplateConfig {
+public class RestControllerConfig extends ModuleData {
     public String endpoint;
     public String usedClass;
     public Boolean get;
