@@ -1,12 +1,30 @@
 package com.example.demo.config;
 
+import com.example.demo.util.ConfigurationHelper;
+import com.example.demo.util.FileHelper;
+import com.example.demo.util.JsonParser;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-//import com.nullbeans.nullbeansserver.freemarker.FreemarkerTemplateWriter;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 public class BeansConfig {
 
+    @Bean
+    public JsonParser getJsonParser() {
+        return new JsonParser();
+    }
+
+    @Bean
+    public ConfigurationHelper getConfigurationHelper() {
+        return new ConfigurationHelper();
+    }
+
+    @Bean
+    public PropertySourcesPlaceholderConfigurer placeHolderConfigurer() {
+        PropertySourcesPlaceholderConfigurer properties = new PropertySourcesPlaceholderConfigurer();
+        return properties;
+    }
 
 
 }

@@ -5,7 +5,6 @@ import com.example.demo.template.config.TemplateConfig;
 import java.util.List;
 
 public class RestControllerConfig extends TemplateConfig {
-
     public String endpoint;
     public String usedClass;
     public Boolean get;

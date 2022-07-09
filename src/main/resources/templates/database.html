@@ -2,30 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Generate database connector</title>
+    <title>Database</title>
 </head>
 <body>
-<h1>Konfigurator bazy</h1>
-<h2>Table</h2>
-<form th:action="@{/database/generate-db-table}" method="post">
-    <label for="tableName">Table name:</label>
-    <input type="text" id="tableName" name="tableName"/>
-    <br/><label for="field1">Table field:</label><input type="text" id="field1" name="field1"/>
-    <br/><label for="field1">Table field:</label><input type="text" id="field1" name="field2"/>
-    <br/><label for="field1">Table field:</label><input type="text" id="field1" name="field3"/>
-    <br/><input type="submit" name="generate" value="Wygeneruj" />
-</form>
-<br/>
-<br/>
-<h2>Connection</h2>
-<form th:action="@{/database/generate-db-connection}" method="post">
-    <label for="aaaaa">URL (ip): </label><input type="text" id="aaaaa" name="dbAddress"/>
-    <br/><label for="field1">Table field:</label><input type="text" id="field1" name="field1"/>
-    <br/><label for="field1">Table field:</label><input type="text" id="field1" name="field2"/>
-    <br/><label for="field1">Table field:</label><input type="text" id="field1" name="field3"/>
-    <br/><input type="submit" name="generate" value="Wygeneruj" />
-</form>
+<h1></h1>
+<h2>Database</h2>
+<div class="navbar">
+    <ul>
+        <li><a href="/database-table/">Table generator</a></li>
+        <li><a href="/database-connector/">Connector generator</a></li>
+        </li>
+    </ul>
+</div>
 
+<form th:action="@{test}" method="get">
+    <input type="submit" value="TEST">
+</form>
 
 </body>
 </html>

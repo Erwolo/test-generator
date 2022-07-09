@@ -46,7 +46,6 @@ public class TemplateGenerator {
 
     private String getPath(String folderName, TemplateConfig template) {
         return String.format("generated_output/%s/%s/%s", folderName, template.filePackage.replaceAll("\\.", "/"), template.fileName + ".java");
+
     }
-
-
 }

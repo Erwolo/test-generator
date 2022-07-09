@@ -20,5 +20,6 @@ public class DtoConfig extends TemplateConfig {
                 ", fileName='" + fileName + '\'' +
                 ", filePackage='" + filePackage + '\'' +
                 '}';
+
     }
 }

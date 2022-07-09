@@ -35,11 +35,4 @@ public class FileHelper {
             directory.mkdirs();
         }
     }
-
-    public static void main(String[] args) {
-        FileHelper.writeToFile("text.txt", "hehexD");
-
-    }
 }
-
-

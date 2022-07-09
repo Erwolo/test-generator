@@ -50,7 +50,7 @@ public class TemplateHelper {
             Map dataModel = convertToMap(config);
             template.process(dataModel, stringWriter);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         return stringWriter.toString();

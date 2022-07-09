@@ -19,13 +19,12 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/database")
-public class DatabaseGeneratorController {
+@RequestMapping("/database-table")
+public class DatabaseTableController {
 
     @GetMapping("/")
-    public String databaseHome() {
-
-        return "database";
+    public String databaseTableHome() {
+        return "database-table";
     }
 
     @PostMapping("/generate-db-table")
@@ -46,18 +45,8 @@ public class DatabaseGeneratorController {
 
         FileHelper.writeToFile("generated_output/" + tableName + ".java", templateContent);
 
-        return "database";
+        return "database-table";
     }
-
-    @RequestMapping("generate-db-connection")
-    public String generateDbConnection(@RequestParam String dbAddress) {
-        System.out.println("DB address is: " + dbAddress);
-
-
-        return "database";
-    }
-
-
 
     private Map<String, Object> prepareTable(String tableName) {
         Map<String, Object> data = new HashMap<String, Object>();
