@@ -47,7 +47,8 @@ public class TemplateHelper {
         StringWriter stringWriter = new StringWriter();
 
         try {
-            template.process(convertToMap(config), stringWriter);
+            Map dataModel = convertToMap(config);
+            template.process(dataModel, stringWriter);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,9 +61,9 @@ public class TemplateHelper {
         return objectMapper.convertValue(config, Map.class);
     }
 
-    public Template getTemplate(TemplateConfig config, Configuration configuration) {
+    private Template getTemplate(TemplateConfig config, Configuration configuration) {
         try {
-            return configuration.getTemplate(config.templateLocation);
+            return configuration.getTemplate(config.template);
         } catch (IOException e) {
             throw new TemplateLoadException(e);
         }
