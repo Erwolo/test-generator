@@ -1,11 +1,12 @@
 package com.example.demo.module.rest;
 
-import com.example.demo.module.rest.AppConfig;
-import com.example.demo.module.rest.components.DtoConfig;
-import com.example.demo.module.rest.components.RestControllerConfig;
+import com.example.demo.module.AppConfig;
+import com.example.demo.module.rest.modules.DtoModule;
+import com.example.demo.module.rest.modules.RestControllerModule;
 
 public class RestAppConfig extends AppConfig {
-    public RestControllerConfig restControllerConfig;
-    public DtoConfig dtoConfig;
+
+    public RestControllerModule restControllerConfig;
+    public DtoModule dtoConfig;
 
 }

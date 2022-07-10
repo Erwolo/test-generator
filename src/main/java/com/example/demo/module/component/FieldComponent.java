@@ -1,11 +1,24 @@
 package com.example.demo.module.component;
 
-import com.example.demo.module.rest.components.Field;
-
 public class FieldComponent extends Component {
 
-    public FieldComponent(String name) {
+    public FieldComponent(String name, String returns) {
         componentName = name;
+        componentReturnType = returns;
         componentType = ComponentType.FIELD;
+        componentModifier = ComponentModifier.PRIVATE;
     }
+
+    public FieldComponent(String name, String returns, ComponentModifier modifier) {
+        componentType = ComponentType.FIELD;
+        componentName = name;
+        componentReturnType = returns;
+        componentModifier = modifier;
+    }
+
+    public FieldComponent() {
+        componentType = ComponentType.FIELD;
+        componentModifier = ComponentModifier.PRIVATE;
+    }
+
 }

@@ -36,7 +36,7 @@ public class DatabaseTableController {
         tableFields.add(field3);
 
         Configuration configuration = TemplateHelper.prepareConfiguration();
-        Template template = configuration.getTemplate("database_templates/EntityTemplate.ftlh");
+        Template template = configuration.getTemplate("database/EntityTemplate.ftlh");
         StringWriter stringWriter = new StringWriter();
         Map<String, Object> data = prepareTable(tableName);
         data.put("tableFields", tableFields);

@@ -1,10 +1,10 @@
-package com.example.demo.module.rest.components;
+package com.example.demo.module.rest.modules;
 
 import com.example.demo.module.ModuleData;
 
 import java.util.List;
 
-public class RestControllerConfig extends ModuleData {
+public class RestControllerModule extends ModuleData {
     public String endpoint;
     public String usedClass;
     public Boolean get;
@@ -13,6 +13,6 @@ public class RestControllerConfig extends ModuleData {
     public Boolean update;
     public List<String> findBy;
 
-    public RestControllerConfig() {
+    public RestControllerModule() {
     }
 }

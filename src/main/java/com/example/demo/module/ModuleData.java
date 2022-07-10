@@ -1,8 +1,19 @@
 package com.example.demo.module;
 
+import com.example.demo.module.component.Component;
+
+import java.util.List;
+
 public class ModuleData {
-    public String moduleLocation;
-    public String moduleName;
-    public String modulePackage;
+
+    protected String templateLocation;
+    public String fileName;
+    public String filePackage;
+
+    public String getTemplateLocation() {
+        return templateLocation;
+    }
+
+
 }
 

@@ -1,6 +1,6 @@
 package com.example.demo.module.generator;
 
-import com.example.demo.module.rest.AppConfig;
+import com.example.demo.module.AppConfig;
 import com.example.demo.module.ModuleData;
 import com.example.demo.util.FileHelper;
 import com.example.demo.util.TemplateHelper;
@@ -15,10 +15,13 @@ public class TemplateGenerator {
     @Autowired
     private TemplateHelper templateHelper;
 
-    public void generate(ModuleData config) {
-        String templateContent = templateHelper.getTemplateAsString(config);
-        String path = String.format("generated_output/%s/%s", config.modulePackage.replaceAll("\\.", "/"), config.moduleName);
-        FileHelper.writeToFile(path, templateContent);
+    public String generate(ModuleData module) {
+        String folderName = UUID.randomUUID().toString();
+
+        String templateContent = templateHelper.getTemplateAsString(module);
+        FileHelper.writeToFile(getPath(folderName, module), templateContent);
+
+        return folderName;
     }
 
     public String generate(AppConfig config) {
@@ -32,8 +35,9 @@ public class TemplateGenerator {
         return folderName;
     }
 
+
     private String getPath(String folderName, ModuleData template) {
-        return String.format("generated_output/%s/%s/%s", folderName, template.modulePackage.replaceAll("\\.", "/"), template.moduleName);
+        return String.format("generated_output/%s/%s/%s", folderName, template.filePackage.replaceAll("\\.", "/"), template.fileName);
     }
 
 

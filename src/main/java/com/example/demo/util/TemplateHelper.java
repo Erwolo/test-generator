@@ -37,7 +37,7 @@ public class TemplateHelper {
 
     public Template getTemplate(ModuleData config, Configuration configuration) {
         try {
-            return configuration.getTemplate(config.moduleLocation);
+            return configuration.getTemplate(config.getTemplateLocation());
         } catch (IOException e) {
             throw new TemplateLoadException(e);
         }

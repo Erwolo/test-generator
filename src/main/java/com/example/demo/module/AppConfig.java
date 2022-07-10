@@ -1,4 +1,4 @@
-package com.example.demo.module.rest;
+package com.example.demo.module;
 
 import com.example.demo.module.ModuleData;
 
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AppConfig {
+
     public List<ModuleData> getTemplates() {
         return Arrays.stream(this.getClass().getFields()).map(field -> {
             try {
