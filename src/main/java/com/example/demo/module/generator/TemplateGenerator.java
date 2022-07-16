@@ -1,6 +1,7 @@
 package com.example.demo.module.generator;
 
 import com.example.demo.module.AppConfig;
+import com.example.demo.module.Module;
 import com.example.demo.module.ModuleData;
 import com.example.demo.util.FileHelper;
 import com.example.demo.util.TemplateHelper;
@@ -17,6 +18,15 @@ public class TemplateGenerator {
     private TemplateHelper templateHelper;
 
     public String generate(ModuleData module) {
+        String folderName = UUID.randomUUID().toString();
+
+        String templateContent = templateHelper.getTemplateAsString(module);
+        FileHelper.writeToFile(getPath(folderName, module), templateContent);
+
+        return folderName;
+    }
+
+    public String generate(Module module) {
         String folderName = UUID.randomUUID().toString();
 
         String templateContent = templateHelper.getTemplateAsString(module);
@@ -47,8 +57,11 @@ public class TemplateGenerator {
         return folderName;
     }
 
-
     private String getPath(String folderName, ModuleData template) {
-        return String.format("generated_output/%s/%s/%s", folderName, template.filePackage.replaceAll("\\.", "/"), template.fileName);
+        return String.format("generated_output/%s/%s/%s", folderName, template.filePackage.replaceAll("\\.", "/"), template.fileName + ".java");
+    }
+
+    private String getPath(String folderName, Module template) {
+        return String.format("generated_output/%s/%s/%s", folderName, template.getModulePackage().replaceAll("\\.", "/"), template.getModuleName() + ".java");
     }
 }

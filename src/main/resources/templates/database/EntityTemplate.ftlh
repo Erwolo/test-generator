@@ -1,8 +1,8 @@
-${filePackage};
+package ${modulePackage};
 
 @Entity
-@Table(name = "${fileName}")
-public class ${fileName} {
+@Table(name = "${moduleName}")
+public class ${moduleName} {
 
 <#list databaseFields as field>
     ${field.componentModifier} ${field.componentReturnType} ${field.componentName};

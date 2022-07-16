@@ -14,7 +14,7 @@ public class RestControllerModule extends ModuleData {
     public List<String> findBy;
 
     public RestControllerModule() {
-        template = "rest/RestTemplate.ftlh";
+        templateLocation = "rest/RestTemplate.ftlh";
     }
 
     @Override
@@ -27,7 +27,7 @@ public class RestControllerModule extends ModuleData {
                 ", delete=" + delete +
                 ", update=" + update +
                 ", findBy=" + findBy +
-                ", template='" + template + '\'' +
+                ", template='" + templateLocation + '\'' +
                 ", fileName='" + fileName + '\'' +
                 ", filePackage='" + filePackage + '\'' +
                 '}';
