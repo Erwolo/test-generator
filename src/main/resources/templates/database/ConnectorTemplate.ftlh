@@ -1,3 +1,5 @@
+package ${modulePackage};
+
 import com.zaxxer.hikari.HikariDataSource;
 
 import javax.sql.DataSource;

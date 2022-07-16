@@ -2,6 +2,7 @@ package com.example.demo.util;
 
 import com.example.demo.generator.exception.TemplateLoadException;
 import com.example.demo.generator.exception.TemplatesFolderNotFoundRuntimeException;
+import com.example.demo.module.Module;
 import com.example.demo.module.ModuleData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import freemarker.template.Configuration;
@@ -26,14 +27,27 @@ public class TemplateHelper {
         return configuration;
     }
 
-    public Template getTemplate(ModuleData config) {
+    public Template getTemplate(ModuleData module) {
         Configuration configuration = TemplateHelper.prepareConfiguration();
-        return getTemplate(config, configuration);
+        return getTemplate(module, configuration);
     }
 
-    public Template getTemplate(ModuleData config, Configuration configuration) {
+    public Template getTemplate(Module module) {
+        Configuration configuration = TemplateHelper.prepareConfiguration();
+        return getTemplate(module, configuration);
+    }
+
+    public Template getTemplate(ModuleData module, Configuration configuration) {
         try {
-            return configuration.getTemplate(config.getTemplateLocation());
+            return configuration.getTemplate(module.getTemplateLocation());
+        } catch (IOException e) {
+            throw new TemplateLoadException(e);
+        }
+    }
+
+    public Template getTemplate(Module module, Configuration configuration) {
+        try {
+            return configuration.getTemplate(module.getTemplateLocation());
         } catch (IOException e) {
             throw new TemplateLoadException(e);
         }
@@ -43,7 +57,24 @@ public class TemplateHelper {
         return processTemplate(config, getTemplate(config));
     }
 
+    public String getTemplateAsString(Module config) {
+        return processTemplate(config, getTemplate(config));
+    }
+
     private String processTemplate(ModuleData config, Template template) {
+        StringWriter stringWriter = new StringWriter();
+
+        try {
+            Map dataModel = convertToMap(config);
+            template.process(dataModel, stringWriter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return stringWriter.toString();
+    }
+
+    private String processTemplate(Module config, Template template) {
         StringWriter stringWriter = new StringWriter();
 
         try {
@@ -65,6 +96,11 @@ public class TemplateHelper {
     }
 
     private Map convertToMap(ModuleData config) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.convertValue(config, Map.class);
+    }
+
+    private Map convertToMap(Module config) {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.convertValue(config, Map.class);
     }
