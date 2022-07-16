@@ -1,13 +1,13 @@
-package com.example.demo.template.config.rest;
+package com.example.demo.module.rest;
 
-import com.example.demo.template.config.AppConfig;
-import com.example.demo.template.config.rest.components.DtoConfig;
-import com.example.demo.template.config.rest.components.RestControllerConfig;
+import com.example.demo.module.AppConfig;
+import com.example.demo.module.rest.modules.DtoModule;
+import com.example.demo.module.rest.modules.RestControllerModule;
 
 public class RestAppConfig extends AppConfig {
 
-    public RestControllerConfig restControllerConfig;
-    public DtoConfig dtoConfig;
+    public RestControllerModule restControllerConfig;
+    public DtoModule dtoConfig;
 
     public RestAppConfig() {
         this.name = "Rest Application";
@@ -21,4 +21,5 @@ public class RestAppConfig extends AppConfig {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }

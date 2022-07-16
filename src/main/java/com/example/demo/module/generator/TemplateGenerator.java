@@ -1,7 +1,7 @@
-package com.example.demo.template.generator;
+package com.example.demo.module.generator;
 
-import com.example.demo.template.config.AppConfig;
-import com.example.demo.template.config.TemplateConfig;
+import com.example.demo.module.AppConfig;
+import com.example.demo.module.ModuleData;
 import com.example.demo.util.FileHelper;
 import com.example.demo.util.TemplateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,13 @@ public class TemplateGenerator {
     @Autowired
     private TemplateHelper templateHelper;
 
-    public void generate(TemplateConfig config) {
-        String templateContent = templateHelper.getTemplateAsString(config);
-        String path = String.format("generated_output/%s/%s", config.filePackage.replaceAll("\\.", "/"), config.fileName);
-        FileHelper.writeToFile(path, templateContent);
+    public String generate(ModuleData module) {
+        String folderName = UUID.randomUUID().toString();
+
+        String templateContent = templateHelper.getTemplateAsString(module);
+        FileHelper.writeToFile(getPath(folderName, module), templateContent);
+
+        return folderName;
     }
 
     public String generate(AppConfig config) {
@@ -44,8 +47,8 @@ public class TemplateGenerator {
         return folderName;
     }
 
-    private String getPath(String folderName, TemplateConfig template) {
-        return String.format("generated_output/%s/%s/%s", folderName, template.filePackage.replaceAll("\\.", "/"), template.fileName + ".java");
 
+    private String getPath(String folderName, ModuleData template) {
+        return String.format("generated_output/%s/%s/%s", folderName, template.filePackage.replaceAll("\\.", "/"), template.fileName);
     }
 }

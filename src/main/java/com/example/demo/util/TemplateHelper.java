@@ -2,7 +2,7 @@ package com.example.demo.util;
 
 import com.example.demo.generator.exception.TemplateLoadException;
 import com.example.demo.generator.exception.TemplatesFolderNotFoundRuntimeException;
-import com.example.demo.template.config.TemplateConfig;
+import com.example.demo.module.ModuleData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -26,24 +26,24 @@ public class TemplateHelper {
         return configuration;
     }
 
-    private static void setDirectory(Configuration configuration) {
-        try {
-            configuration.setDirectoryForTemplateLoading(new File("src/main/resources/templates"));
-        } catch (IOException e) {
-            throw new TemplatesFolderNotFoundRuntimeException(e);
-        }
-    }
-
-    public Template getTemplate(TemplateConfig config) {
+    public Template getTemplate(ModuleData config) {
         Configuration configuration = TemplateHelper.prepareConfiguration();
         return getTemplate(config, configuration);
     }
 
-    public String getTemplateAsString(TemplateConfig config) {
+    public Template getTemplate(ModuleData config, Configuration configuration) {
+        try {
+            return configuration.getTemplate(config.getTemplateLocation());
+        } catch (IOException e) {
+            throw new TemplateLoadException(e);
+        }
+    }
+
+    public String getTemplateAsString(ModuleData config) {
         return processTemplate(config, getTemplate(config));
     }
 
-    private String processTemplate(TemplateConfig config, Template template) {
+    private String processTemplate(ModuleData config, Template template) {
         StringWriter stringWriter = new StringWriter();
 
         try {
@@ -56,16 +56,16 @@ public class TemplateHelper {
         return stringWriter.toString();
     }
 
-    private Map convertToMap(TemplateConfig config) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.convertValue(config, Map.class);
+    private static void setDirectory(Configuration configuration) {
+        try {
+            configuration.setDirectoryForTemplateLoading(new File("src/main/resources/templates"));
+        } catch (IOException e) {
+            throw new TemplatesFolderNotFoundRuntimeException(e);
+        }
     }
 
-    private Template getTemplate(TemplateConfig config, Configuration configuration) {
-        try {
-            return configuration.getTemplate(config.template);
-        } catch (IOException e) {
-            throw new TemplateLoadException(e);
-        }
+    private Map convertToMap(ModuleData config) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.convertValue(config, Map.class);
     }
 }

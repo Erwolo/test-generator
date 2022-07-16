@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.template.config.rest.RestAppConfig;
-import com.example.demo.template.generator.TemplateGenerator;
+import com.example.demo.module.rest.RestAppConfig;
+import com.example.demo.module.generator.TemplateGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

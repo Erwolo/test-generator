@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.template.config.AppConfig;
-import com.example.demo.template.config.rest.RestAppConfig;
+import com.example.demo.module.AppConfig;
+import com.example.demo.module.rest.RestAppConfig;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

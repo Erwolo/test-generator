@@ -1,4 +1,4 @@
-package com.example.demo.template.config.rest.components;
+package com.example.demo.module.rest.components;
 
 public class Field {
     public String type;
