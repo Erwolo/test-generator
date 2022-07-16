@@ -9,4 +9,17 @@ public class RestAppConfig extends AppConfig {
     public RestControllerModule restControllerConfig;
     public DtoModule dtoConfig;
 
+    public RestAppConfig() {
+        this.name = "Rest Application";
+    }
+
+    @Override
+    public String toString() {
+        return "RestAppConfig{" +
+                "restControllerConfig=" + restControllerConfig +
+                ", dtoConfig=" + dtoConfig +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
 }

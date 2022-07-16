@@ -6,12 +6,12 @@ import java.util.List;
 
 public class ModuleData {
 
-    protected String templateLocation;
+    protected String template;
     public String fileName;
     public String filePackage;
 
     public String getTemplateLocation() {
-        return templateLocation;
+        return template;
     }
 
 

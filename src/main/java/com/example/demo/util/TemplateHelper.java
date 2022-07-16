@@ -31,10 +31,6 @@ public class TemplateHelper {
         return getTemplate(config, configuration);
     }
 
-    public String getTemplateAsString(ModuleData config) {
-        return processTemplate(config, getTemplate(config));
-    }
-
     public Template getTemplate(ModuleData config, Configuration configuration) {
         try {
             return configuration.getTemplate(config.getTemplateLocation());
@@ -43,11 +39,16 @@ public class TemplateHelper {
         }
     }
 
+    public String getTemplateAsString(ModuleData config) {
+        return processTemplate(config, getTemplate(config));
+    }
+
     private String processTemplate(ModuleData config, Template template) {
         StringWriter stringWriter = new StringWriter();
 
         try {
-            template.process(convertToMap(config), stringWriter);
+            Map dataModel = convertToMap(config);
+            template.process(dataModel, stringWriter);
         } catch (Exception e) {
             e.printStackTrace();
         }

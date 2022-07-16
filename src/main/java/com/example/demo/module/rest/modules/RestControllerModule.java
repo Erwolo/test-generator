@@ -14,5 +14,22 @@ public class RestControllerModule extends ModuleData {
     public List<String> findBy;
 
     public RestControllerModule() {
+        template = "rest/RestTemplate.ftlh";
+    }
+
+    @Override
+    public String toString() {
+        return "RestControllerConfig{" +
+                "endpoint='" + endpoint + '\'' +
+                ", usedClass='" + usedClass + '\'' +
+                ", get=" + get +
+                ", insert=" + insert +
+                ", delete=" + delete +
+                ", update=" + update +
+                ", findBy=" + findBy +
+                ", template='" + template + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", filePackage='" + filePackage + '\'' +
+                '}';
     }
 }

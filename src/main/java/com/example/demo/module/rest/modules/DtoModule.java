@@ -10,5 +10,17 @@ public class DtoModule extends ModuleData {
     public List<Field> fields;
 
     public DtoModule() {
+        template = "rest/DtoTemplate.ftlh";
+    }
+
+    @Override
+    public String toString() {
+        return "DtoConfig{" +
+                "fields=" + fields +
+                ", template='" + template + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", filePackage='" + filePackage + '\'' +
+                '}';
+
     }
 }
