@@ -21,10 +21,11 @@ public class InitializeData {
 
     @EventListener(ApplicationReadyEvent.class)
     public void loadData() {
-        ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator(false, false, "UTF-8", new ClassPathResource("initialize.sql"));
-
-        if (databaseMode.equals("prod")) resourceDatabasePopulator.execute(dataSource);
-        // TODO: implement dev database initialization if (db.mode=dev)
+        if (databaseMode.equals("prod"))
+            new ResourceDatabasePopulator(false, false, "UTF-8", new ClassPathResource("mysql_initialize.sql"))
+                    .execute(dataSource);
+        if (databaseMode.equals("dev"))
+            new ResourceDatabasePopulator(false, false, "UTF-8", new ClassPathResource("h2_initialize.sql"))
+                    .execute(dataSource);
     }
-
 }
