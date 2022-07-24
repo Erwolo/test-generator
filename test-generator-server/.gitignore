@@ -30,3 +30,6 @@ build/
 !**/src/test/**/build/
 
 /generated_output/
+
+../*.md
+../.idea

@@ -5,7 +5,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/${endpoint}")
-public class ${fileName} {
+public class ${moduleName} {
 
     private List<${usedClass}> list;
 

@@ -20,4 +20,16 @@ public class AppConfig {
                     }
                 }).collect(Collectors.toList());
     }
+
+    public List<Module> getModules() {
+        return Arrays.stream(this.getClass().getFields())
+                .filter(field -> field.getType().getSuperclass().equals(Module.class))
+                .map(field -> {
+                    try {
+                        return (Module) field.get(this);
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e);
+                    }
+                }).collect(Collectors.toList());
+    }
 }

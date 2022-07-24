@@ -1,8 +1,8 @@
-public class ${fileName} {
+public class ${moduleName} {
 
     private Long id;
 
-    public ${fileName}(){
+    public ${moduleName}(){
     }
 
 <#list fields as field>
