@@ -1,7 +1,7 @@
 package com.example.demo.testing.controller;
 
 import com.example.demo.module.database.modules.DatabaseTableModule;
-import com.example.demo.module.generator.TemplateGenerator;
+import com.example.demo.generator.TemplateGenerator;
 import com.example.demo.testing.component.TestComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -16,4 +16,16 @@ public class DatabaseTableModule extends Module {
         setTemplateLocation("database/EntityTemplate.ftlh");
     }
 
+    @Override
+    public String toString() {
+        return "DatabaseTableModule{" +
+                "databaseFields=" + databaseFields +
+                ", databaseMethods=" + databaseMethods +
+                ", moduleName='" + moduleName + '\'' +
+                ", moduleLocation='" + moduleLocation + '\'' +
+                ", modulePackage='" + modulePackage + '\'' +
+                ", components=" + components +
+                ", templateLocation='" + templateLocation + '\'' +
+                '}';
+    }
 }

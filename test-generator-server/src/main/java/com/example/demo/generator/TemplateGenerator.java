@@ -1,4 +1,4 @@
-package com.example.demo.module.generator;
+package com.example.demo.generator;
 
 import com.example.demo.module.AppConfig;
 import com.example.demo.module.Module;
@@ -39,6 +39,17 @@ public class TemplateGenerator {
         String folderName = UUID.randomUUID().toString();
 
         config.getTemplates().forEach(template -> {
+            String templateContent = templateHelper.getTemplateAsString(template);
+            FileHelper.writeToFile(getPath(folderName, template), templateContent);
+        });
+
+        return folderName;
+    }
+
+    public String generateModules(AppConfig config) {
+        String folderName = UUID.randomUUID().toString();
+
+        config.getModules().forEach(template -> {
             String templateContent = templateHelper.getTemplateAsString(template);
             FileHelper.writeToFile(getPath(folderName, template), templateContent);
         });

@@ -1,10 +1,11 @@
 package com.example.demo.module.rest.modules;
 
+import com.example.demo.module.Module;
 import com.example.demo.module.ModuleData;
 
 import java.util.List;
 
-public class RestControllerModule extends ModuleData {
+public class RestControllerModule extends Module {
     public String endpoint;
     public String usedClass;
     public Boolean get;
@@ -19,7 +20,7 @@ public class RestControllerModule extends ModuleData {
 
     @Override
     public String toString() {
-        return "RestControllerConfig{" +
+        return "RestControllerModule{" +
                 "endpoint='" + endpoint + '\'' +
                 ", usedClass='" + usedClass + '\'' +
                 ", get=" + get +
@@ -27,9 +28,11 @@ public class RestControllerModule extends ModuleData {
                 ", delete=" + delete +
                 ", update=" + update +
                 ", findBy=" + findBy +
-                ", template='" + templateLocation + '\'' +
-                ", fileName='" + fileName + '\'' +
-                ", filePackage='" + filePackage + '\'' +
+                ", moduleName='" + moduleName + '\'' +
+                ", moduleLocation='" + moduleLocation + '\'' +
+                ", modulePackage='" + modulePackage + '\'' +
+                ", components=" + components +
+                ", templateLocation='" + templateLocation + '\'' +
                 '}';
     }
 }
